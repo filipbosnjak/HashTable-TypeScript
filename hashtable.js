@@ -5,10 +5,10 @@ var stringToHash = function (key, tableSize) {
     var hash = 17; //Starting with a prime number!
     //Hash making: we need to go over all the char in a string, get the code of each of them, take a product and then mod it (%)
     for (var i = 0; i < key.length; i++) {
-        hash = hash * key.charCodeAt(i);
+        hash = (13 * hash * key.charCodeAt(i)) % tableSize;
     }
     // 'someString'.charCodeAt(2) gets a char code of the third letter.
-    return hash % tableSize;
+    return hash;
     //We return a mod cause our hash key would get really big otherwise
 };
 var HashTable = /** @class */ (function () {
@@ -16,11 +16,12 @@ var HashTable = /** @class */ (function () {
         var _this = this;
         this.tableSize = 100;
         this.table = new Array(this.tableSize);
+        //table :any = new Array(this.tableSize);
         this.setItem = function (key, value) {
             _this.table[stringToHash(key, _this.tableSize)] = value;
         };
         this.getItem = function (key) {
-            return _this.table[stringToHash(key)];
+            return _this.table[stringToHash(key, _this.tableSize)];
         };
     }
     return HashTable;

@@ -7,26 +7,28 @@ const stringToHash = (key:string , tableSize:number):number => {
 
     //Hash making: we need to go over all the char in a string, get the code of each of them, take a product and then mod it (%)
     for(let i=0; i<key.length;i++){
-        hash = hash * key.charCodeAt(i)
+        hash = (13 * hash * key.charCodeAt(i))%tableSize;
     }
     
     // 'someString'.charCodeAt(2) gets a char code of the third letter.
-    return hash%tableSize;
+    return hash;
     //We return a mod cause our hash key would get really big otherwise
 }
 
 
 class HashTable{
 
-    tableSize:number = 100;
+    tableSize: number = 100;
     table: Array<string> = new Array(this.tableSize);
+    //table :any = new Array(this.tableSize);
 
     setItem = (key:string,value:string) => {
         this.table[stringToHash(key , this.tableSize)] = value;
     };
 
     getItem = (key):string => {
-        return this.table[stringToHash(key , )];
+        return this.table[stringToHash(key , this.tableSize)];
+        
     };
 }
 
