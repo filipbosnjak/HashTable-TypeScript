@@ -1,5 +1,7 @@
 //let mess:string = 'Hello World!';
 //console.log(mess);
+//let mess:string = 'Hello World!';
+//console.log(mess);
 var stringToHash = function (key, tableSize) {
     //We need to turn passed string into an integer 
     var hash = 17; //Starting with a prime number!

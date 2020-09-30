@@ -1,6 +1,9 @@
 //let mess:string = 'Hello World!';
 //console.log(mess);
 
+//let mess:string = 'Hello World!';
+//console.log(mess);
+
 const stringToHash = (key:string , tableSize:number):number => {
     //We need to turn passed string into an integer 
     let hash:number = 17; //Starting with a prime number!
